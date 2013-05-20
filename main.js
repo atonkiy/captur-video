@@ -20,8 +20,8 @@ var app = {
 			var msg = 'An error occurred during capture: ' + error.code;
 			navigator.notification.alert(msg, null, 'Uh oh!');
 		}
-		self.showAlert('Capture Video Start', 'Go');
 		if (navigator.device) {
+			self.showAlert('Capture Video Start', 'Go');
 			navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
 		}
 	},
