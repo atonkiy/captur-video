@@ -2,44 +2,10 @@
 <html>
   <head>
     <title>Capture Video</title>
-    <script type="text/javascript" charset="utf-8">
-
-    // Called when capture operation is finished
-    //
-    function captureSuccess(mediaFiles) {
-        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            uploadFile(mediaFiles[i]);
-        }       
-    }
-
-    // Called if something bad happens.
-    // 
-    function captureError(error) {
-        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
-
-    // A button will call this function
-    //
-    function captureVideo() {
-        navigator.notification.alert('Capture Video Start', null, 'Go');
-        // Launch device video recording application, 
-        // allowing user to capture up to 2 video clips
-        //navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 2});
-    }
-
-    // Upload files to server
-    function uploadFile(mediaFile) {
-      var path = mediaFile.fullPath,
-          name = mediaFile.name;
-      navigator.notification.alert(path, null, name);
- 
-    }
-
-    </script>
     </head>
     <body>
-        <button onclick="captureVideo();">Capture Video</button> <br>
+        <button class="capture-video">Capture Video</button> <br>
     </body>
+	<script src="lib/jquery-1.8.2.min.js"></script>
+	<script src="main.js"></script>
 </html>
