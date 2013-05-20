@@ -9,7 +9,21 @@ var app = {
 	captureVideo : function(){
 		var self = this;
 		
+		var captureSuccess = function(mediaFiles){
+			var i, len;
+			for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+			    uploadFile(mediaFiles[i]);
+			}
+		};
+		
+		var captureError = function(error){
+			var msg = 'An error occurred during capture: ' + error.code;
+			navigator.notification.alert(msg, null, 'Uh oh!');
+		}
 		self.showAlert('Capture Video Start', 'Go');
+		if (navigator.device) {
+			navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+		}
 	},
     initialize: function() {
         var self = this;
@@ -24,26 +38,13 @@ var app = {
 app.initialize();
 
 function captureSuccess(mediaFiles) {
-    var i, len;
-    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-        uploadFile(mediaFiles[i]);
-    }       
+    
 }
 
 // Called if something bad happens.
 // 
 function captureError(error) {
-    var msg = 'An error occurred during capture: ' + error.code;
-    navigator.notification.alert(msg, null, 'Uh oh!');
-}
 
-// A button will call this function
-//
-function captureVideo() {
-    navigator.notification.alert('Capture Video Start', null, 'Go');
-    // Launch device video recording application, 
-    // allowing user to capture up to 2 video clips
-    navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 2});
 }
 
 // Upload files to server
