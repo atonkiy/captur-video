@@ -20,6 +20,12 @@ var app = {
 			var msg = 'An error occurred during capture: ' + error.code;
 			navigator.notification.alert(msg, null, 'Uh oh!');
 		}
+		
+		var uploadFile = function(mediaFile){
+			var path = mediaFile.fullPath,
+			name = mediaFile.name;
+			navigator.notification.alert(path, null, name);
+		}
 		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
 		self.showAlert('Capture Video Start', 'Go');
 	},
@@ -33,22 +39,11 @@ var app = {
 
 };
 
-app.initialize();
 
-function captureSuccess(mediaFiles) {
-    
-}
+document.addEventListener("deviceready", function(){
+// Your javascript phonegap code.
+  app.initialize();
+});
 
-// Called if something bad happens.
-// 
-function captureError(error) {
 
-}
 
-// Upload files to server
-function uploadFile(mediaFile) {
-  var path = mediaFile.fullPath,
-      name = mediaFile.name;
-  navigator.notification.alert(path, null, name);
-
-}
