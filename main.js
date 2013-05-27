@@ -48,7 +48,8 @@ var app = {
         var i, len;
         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
             //uploadFile(mediaFiles[i]);
-			 navigator.notification.alert(mediaFiles.fullPath, null, mediaFile.name);
+			var mediaFile = mediaFiles[i];
+			 navigator.notification.alert(mediaFile.fullPath, null, mediaFile.name);
         }       
     }
 
@@ -63,8 +64,8 @@ var app = {
     //
     function captureVideo() {
         // Launch device video recording application, 
-        // allowing user to capture up to 2 video clips
-        navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 2});
+        // allowing user to capture up to 1 video clips
+        navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
     }
 
     // Upload files to server
