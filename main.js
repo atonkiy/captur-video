@@ -81,7 +81,8 @@ var app = {
         ft.upload(path,
             url,
             function(result) {
-				navigator.notification.alert(result.response, null, 'Upload success');
+				//navigator.notification.alert(result.response, null, 'Upload success');
+				navigator.notification.alert('Upload success!!!!!!!!!', null, 'Upload success');
             },
             function(error) {
 				if (error.code == 1) {
@@ -93,7 +94,7 @@ var app = {
 				} else {
 					navigator.notification.alert("unknown error",null,'Error');
 				}
-            },options);  
+            },{ fileName: name });  
     }
 
 
