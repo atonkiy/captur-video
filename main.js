@@ -78,11 +78,18 @@ var app = {
         ft.upload(path,
             url,
             function(result) {
-				navigator.notification.alert(result.responseCode, null, 'Upload success');
-                navigator.notification.alert(result.bytesSent + ' bytes sent', null, 'Upload success');
+				navigator.notification.alert(result.response, null, 'Upload success');
             },
             function(error) {
-				navigator.notification.alert('Error uploading file ' + path + ': ' + error.code, null, error.code);
+				if (error.code == FileTransferError.FILE_NOT_FOUND_ERR) {
+					navigator.notification.alert("file " + error.source " not found",null,'Error');
+				} else if (error.code == FileTransferError.INVALID_URL_ERR) {
+					navigator.notification.alert("url " + error.target " invalid",null,'Error');
+				} else if (error.code == FileTransferError.CONNECTION_ERR) {
+					navigator.notification.alert("connection error",null,'Error');
+				} else {
+					navigator.notification.alert("unknown error",null,'Error');
+				}
             },
             { fileName: name });  
     }
