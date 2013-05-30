@@ -96,7 +96,7 @@ var app = {
 		options.fileName = name;
 		options.mimeType = mediaFile.type;
         ft.upload(path,url,uploadSuccess,uploadFail,options);
-		ft.abort(uploadSuccess, uploadFail);
+		//ft.abort(uploadSuccess, uploadFail);
 
     }
 	
