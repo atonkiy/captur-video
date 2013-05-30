@@ -94,7 +94,7 @@ var app = {
 				} else {
 					navigator.notification.alert("unknown error",null,'Error');
 				}
-            },{ fileName: name });  
+            },{ fileName: name , chunkedMode : false});  
     }
 
 
