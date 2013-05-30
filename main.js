@@ -75,23 +75,25 @@ var app = {
             path = mediaFile.fullPath,
             name = mediaFile.name;
 		var url ='http://drupal7.dev/questionbridge/video/upload';
+		var options = FileUploadOptions();
+		options.chunkedMode = false;
+		options.fileName = name;
         ft.upload(path,
             url,
             function(result) {
 				navigator.notification.alert(result.response, null, 'Upload success');
             },
             function(error) {
-				if (error.code == FileTransferError.FILE_NOT_FOUND_ERR) {
+				if (error.code == 1) {
 					navigator.notification.alert("file " + error.source " not found",null,'Error');
-				} else if (error.code == FileTransferError.INVALID_URL_ERR) {
+				} else if (error.code == 2) {
 					navigator.notification.alert("url " + error.target " invalid",null,'Error');
-				} else if (error.code == FileTransferError.CONNECTION_ERR) {
+				} else if (error.code == 3) {
 					navigator.notification.alert("connection error",null,'Error');
 				} else {
 					navigator.notification.alert("unknown error",null,'Error');
 				}
-            },
-            { fileName: name });  
+            },options);  
     }
 
 
