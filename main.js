@@ -47,9 +47,10 @@ var app = {
     function captureSuccess(mediaFiles) {
         var i, len;
         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            //uploadFile(mediaFiles[i]);
+            
 			var mediaFile = mediaFiles[i];
-			 navigator.notification.alert(mediaFile.fullPath, null, mediaFile.name);
+			//uploadFile(mediaFiles[i]);
+			//navigator.notification.alert(mediaFile.fullPath, null, mediaFile.name);
         }       
     }
 
@@ -73,17 +74,17 @@ var app = {
         var ft = new FileTransfer(),
             path = mediaFile.fullPath,
             name = mediaFile.name;
-/*
+		var url ='http://drupal7.dev/questionbridge/video/upload';
         ft.upload(path,
-            "http://my.domain.com/upload.php",
+            url,
             function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
+				navigator.notification.alert(result.responseCode, null, 'Upload success');
+                navigator.notification.alert(result.bytesSent + ' bytes sent', null, 'Upload success');
             },
             function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
+				navigator.notification.alert('Error uploading file ' + path + ': ' + error.code, null, error.code);
             },
-            { fileName: name });   */
+            { fileName: name });  
     }
 
 
