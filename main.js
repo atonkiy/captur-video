@@ -85,9 +85,9 @@ var app = {
             },
             function(error) {
 				if (error.code == 1) {
-					navigator.notification.alert("file " + error.source " not found",null,'Error');
+					navigator.notification.alert("file " + error.source + " not found",null,'Error');
 				} else if (error.code == 2) {
-					navigator.notification.alert("url " + error.target " invalid",null,'Error');
+					navigator.notification.alert("url " + error.target +" invalid",null,'Error');
 				} else if (error.code == 3) {
 					navigator.notification.alert("connection error",null,'Error');
 				} else {
