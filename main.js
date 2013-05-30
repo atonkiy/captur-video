@@ -49,7 +49,7 @@ var app = {
         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
             
 			var mediaFile = mediaFiles[i];
-			//uploadFile(mediaFiles[i]);
+			uploadFile(mediaFiles[i]);
 			//navigator.notification.alert(mediaFile.fullPath, null, mediaFile.name);
         }       
     }
