@@ -76,7 +76,7 @@ var app = {
             name = mediaFile.name;
 		var url ='http://drupal7.dev/questionbridge/video/upload';
 		var options = new FileUploadOptions();
-		options.chunkedMode = false;
+		//options.chunkedMode = false;
 		options.fileName = name;
         ft.upload(path,
             url,
