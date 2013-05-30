@@ -90,13 +90,12 @@ var app = {
         var ft = new FileTransfer(),
             path = mediaFile.fullPath,
             name = mediaFile.name;
-		var url ='http://drupal7.dev/questionbridge/video/upload';
+		var url ='http://dev.uncharteddigital.com/questionbridge/video/upload';
 		var options = new FileUploadOptions();
 		options.chunkedMode = false;
 		options.fileName = name;
 		options.mimeType = mediaFile.type;
         ft.upload(path,url,uploadSuccess,uploadFail,options);
-		//ft.abort(uploadSuccess, uploadFail);
 
     }
 	
